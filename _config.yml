@@ -1,8 +1,9 @@
 # Site wide configuration
 
-title:            Site Title
+title:            Lajos Veres' page
 locale:           en_US
-url:              
+#url:              http://localhost:4000
+url:              http://lajosveres.com
 
 
 # Jekyll configuration
@@ -26,23 +27,23 @@ kramdown:
 
 # Site owner
 owner:
-  name: Your Name
-  avatar: bio-photo.jpg
-  bio: "Describe your self."
-  email: 
-  disqus-shortname: 
-  twitter: #username
-  facebook: #username
+  name: Lajos Veres
+  avatar: https://avatars3.githubusercontent.com/u/3994645
+  bio: "IT guy"
+  email: lajosveres@lavela.hu
+  disqus-shortname : lajosveres
+  twitter: lajos_veres
+  facebook:
   google:
-    plus: #username
-    analytics: 
+    plus:
+    analytics: UA-65319204-1
     verify: 
     ad-client: 
     ad-slot: 
   bing-verify: 
-  github: #username
-  stackoverflow: #http://stackoverflow.com/users/123456/username
-  linkedin: #username
+  github: vlajos
+  stackoverflow: 1665673/lajos-veres
+  linkedin: lajosveres
   xing: #username
   instagram: #username
   lastfm: #username
