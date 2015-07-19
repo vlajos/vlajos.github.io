@@ -28,6 +28,9 @@ kramdown:
 # Site owner
 owner:
   name: Lajos Veres
+  phone: 0044 7927 460 778
+  phone-hu: 0036 20 438 5909
+  address:
   avatar: https://avatars3.githubusercontent.com/u/3994645
   bio: "IT guy"
   email: lajosveres@lavela.hu
