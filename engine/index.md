@@ -12,3 +12,4 @@ The page has been created, hosted using the following technologies:
 * Theme: [Minimal Mistake](http://mmistakes.github.io/minimal-mistakes/)
 * Hosting: [GitHub Pages](https://pages.github.com/)
 * Commenting: [Disqus](https://disqus.com/)
+* Favicon from: [Free Favicon](http://www.freefavicon.com/)

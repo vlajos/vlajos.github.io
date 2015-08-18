@@ -2,7 +2,7 @@
 layout: post
 modified: 2015-08-17
 comments: true
-tags: [cdn, akamai, rackspace, nginx, iftop, apache, netstat, newrelic, geckoboard, apdex]
+tags: [cdn, akamai, rackspace, nginx, iftop, apache, netstat, newrelic, geckoboard, apdex, postmortem]
 title: "Orchestrating a high traffic static page after the last minute"
 excerpt: "A presumably calm Monday with some trouble and network debugging."
 image:
@@ -96,7 +96,7 @@ I asked the frontend team to optimise those images quickly and they reduced thei
 
 In the meantime I started to bootstrap a rackspace CDN service. It was surprisingly easy.
 I had never worked with CDN services before.
-In a half phrase they work as reverse proxy. You add a name and the "original" server and it starts to serve the original server's
+In a nutshell they work as reverse proxy. You add a name and the "original" server and it starts to serve the original server's
 content on the new name. And you can add rules for caching. It would be perfect, if the caching worked...
 Anyway the frontend team changed the URLs quickly to the CDN's and I started to debug why it was not caching.
 
