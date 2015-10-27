@@ -9,7 +9,7 @@ excerpt: "Alternative for $timeout to make protractor testing a bit easier."
 Currently we are working on a big refactoring project. We are rewriting a big chunk of legacy javascript with Angular.js.
 We also write end to end tests with protractor to keep our system more robust.
 
-My colleagues used UI Bootstrap module's [alert](https://angular-ui.github.io/bootstrap/#/alert)
+My colleagues used UI Bootstrap module's [alert](https://angular-ui.github.io/bootstrap/#/alert){:target="_blank"}
 function to display different things to our clients.
 And they wanted to test if the alert is displayed properly.
 
@@ -28,15 +28,15 @@ This means if you do not disable the synchronization, you cannot see the opened 
 
 So in our case the `click()` opened the alert, which started the `$timeout`, and protractor suspended the execution and then it timed out.
 
-This [link](https://github.com/angular/protractor/issues/169)
+This [link](https://github.com/angular/protractor/issues/169){:target="_blank"}
 helped us a lot to understand the situation:
 
 Therefore if you want to test any `$timeout` based functionality you have to turn on `ignoreSynchronization` which is basically a hack for non-Angular apps.
 
-[There](https://github.com/angular/angular.js/commit/2b5ce84fca7b41fca24707e163ec6af84bc12e83)
+[There](https://github.com/angular/angular.js/commit/2b5ce84fca7b41fca24707e163ec6af84bc12e83){:target="_blank"}
 they suggest to use `$interval` because it fits better to this case.
 
 As a work around currently we turned on `ignoreSynchronization`, but for a proper solution we implemented the suggested `$interval` transition
-and sent a [Pull Request](https://github.com/angular-ui/bootstrap/pull/3982).
+and sent a [Pull Request](https://github.com/angular-ui/bootstrap/pull/3982){:target="_blank"}.
 
 It seems that there are different opinions regarding this `$timeout` vs `$interval` debate. (See the comments in the PR.)

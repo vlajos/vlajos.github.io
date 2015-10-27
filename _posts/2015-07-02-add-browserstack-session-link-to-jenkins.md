@@ -73,7 +73,7 @@ With this we have got a line in our logs like this:
 `Browserstack session url: https://www.browserstack.com/automate/builds/123.../sessions/456...`
 
 When we started to develop this function we did not know yet how we could use this link in Jenkins, so originally this was only a temporary verification step.
-Fortunately Jenkins has a [Description Setter Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Description+Setter+Plugin)
+Fortunately Jenkins has a [Description Setter Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Description+Setter+Plugin){:target="_blank"}
 which can run regular expression against the build log and use them customise the given build's description.
 
 You have to install the plugin first:

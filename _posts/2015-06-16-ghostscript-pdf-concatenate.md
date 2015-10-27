@@ -71,4 +71,4 @@ gs -dAutoRotatePages=/None -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=$
 
 A 27 years old software saved our day.
 
-[Link to its version 1.n History](http://ghostscript.com/doc/current/History1.htm#Version1.0)
+[Link to its version 1.n History](http://ghostscript.com/doc/current/History1.htm#Version1.0){:target="_blank"}
