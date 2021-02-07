@@ -1,7 +1,5 @@
 ---
-layout: post
 modified: 2015-06-16
-comments: true
 tags: [pdf, ghostscript, fpdi, concatenate, orientation, rotate]
 title: "Save our day with ghostscript to concatenate PDF files"
 excerpt: "Using ghostscript to manipulate PDF files."

@@ -1,7 +1,5 @@
 ---
-layout: post
 modified: 2015-07-02
-comments: true
 tags: [protractor, Browserstack, node.js, jenkins]
 title: "Jenkins, Browserstack integration: Link jenkins builds with Browserstack sessions"
 excerpt: "Linking Browserstack session's in Jenkins' build page using the Description setter plugin and a bit javascript"

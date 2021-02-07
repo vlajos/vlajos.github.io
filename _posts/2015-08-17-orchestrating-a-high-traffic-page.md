@@ -1,12 +1,10 @@
 ---
-layout: post
 modified: 2015-08-17
-comments: true
 tags: [cdn, akamai, rackspace, nginx, iftop, apache, netstat, newrelic, geckoboard, apdex, postmortem]
 title: "Orchestrating a high traffic static page after the last minute"
 excerpt: "A presumably calm Monday with some trouble and network debugging."
-image:
-  feature: windsor.jpg
+header:
+  overlay_image: /images/windsor.jpg
 ---
 
 Some background:

@@ -1,64 +1,118 @@
-# Site wide configuration
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
 title:            Lajos Veres' page
-locale:           en_US
-#url:              http://192.168.1.99:4000
-url:              https://lajosveres.com
+email: 	lajosveres@lavela.hu
+description: >- # this means to ignore newlines until "baseurl:"
+  Lajos Veres' page
+twitter_username: lajos_veres
+github_username: vlajos
+minimal_mistakes_skin: default
+search: false
 
-# Jekyll configuration
+# Build settings
+markdown: kramdown
+remote_theme: mmistakes/minimal-mistakes
+# Outputting
+permalink: /:categories/:title/
+paginate: 10 # amount of posts to show
+paginate_path: /page:num/
+timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
-permalink:   /:categories/:title/
-markdown:    kramdown
-highlighter: rouge
-sass:
-  sass_dir: _sass
-  style: compressed
-gems:
+include:
+  - _pages
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
+
+# Plugins (previously gems:)
+plugins:
+  - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jemoji
+  - jekyll-include-cache
 
-kramdown:
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  use_coderay: false
-
-
-# Site owner
-owner:
-  name: Lajos Veres
-  phone: 0044 7927 460 778
+author:
+  name   : Lajos Veres
+  phone  : 0044 7927 460 778
   phone-hu: 0036 20 438 5909
-  address:
-  avatar: https://avatars3.githubusercontent.com/u/3994645
-  bio: "Pragmatic engineer"
+  avatar : https://avatars3.githubusercontent.com/u/3994645
+  bio    : Pragmatic engineer
   email: lajosveres@lavela.hu
-  disqus-shortname : lajosveres
   twitter: lajos_veres
-  facebook:
-  google:
-    plus:
-    analytics: UA-65319204-1
-    verify: 
-    ad-client: 
-    ad-slot: 
-  bing-verify: 
-  github: vlajos
-  stackoverflow: 1665673/lajos-veres
-  linkedin: lajosveres
-  xing: #username
-  instagram: #username
-  lastfm: #username
-  tumblr: #username
-  pinterest: #username
-  foursquare: #username
-  steam: #username
-  dribbble: #username
-  youtube: #username
-  soundcloud: #username
-  weibo: #username
-  flickr: #username
-  codepen: #username
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/vlajos/"
+    - label: "Stackoverflow"
+      icon: "fab fa-fw fa-stack-overflow"
+      url: "https://stackoverflow.com/users/1665673/lajos-veres"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin-in"
+      url: "https://linkedin.com/in/lajosveres"
 
-include: [".htaccess"]
-exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
+footer:
+  links:
+
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+  # _pages
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/
+
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "UA-65319204-1"
+    anonymize_ip: false # default
+
+repository: vlajos/vlajos.github.io
+
+comments:
+  provider: "disqus"
+  disqus:
+    shortname: "lajosveres"

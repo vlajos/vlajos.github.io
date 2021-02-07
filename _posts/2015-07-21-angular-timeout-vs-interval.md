@@ -1,7 +1,5 @@
 ---
-layout: post
 modified: 2015-07-21
-comments: true
 tags: [angular.js, javascript, $timeout, $interval, protractor, testing]
 title: "Testing an alert was more complex than it seemed to be..."
 excerpt: "Alternative for $timeout to make protractor testing a bit easier."

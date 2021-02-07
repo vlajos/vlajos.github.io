@@ -1,7 +1,9 @@
-# Site navigation links
-
-- title: Contact
-  url: /contact/
-
-- title: Engine
-  url: /engine/
+main:
+  - title: Posts
+    url: /posts/
+  - title: Tags
+    url: /tags/
+  - title: Contact
+    url: /contact/
+  - title: Engine
+    url: /engine/

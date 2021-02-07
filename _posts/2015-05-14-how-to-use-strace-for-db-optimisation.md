@@ -1,7 +1,5 @@
 ---
-layout: post
 modified: 2015-05-14
-comments: true
 tags: [strace, optimisation, index, mysql]
 title: "A lucky shot with strace to optimise database"
 excerpt: "How can you get sometimes useful insights about running processes."

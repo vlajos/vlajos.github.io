@@ -1,7 +1,5 @@
 ---
-layout: post
 modified: 2015-09-16
-comments: true
 tags: [apache, nginx, testing, http, wget, https, ssl]
 title: "Verifying webserver configuration with some basic tests"
 excerpt: "Behind firewalls, load balancers, cdns, reverse proxies and with a not totally simple webserver configuration, it can quite be hard to verify all the different locations, virtual hosts, aliases, rewrites."
