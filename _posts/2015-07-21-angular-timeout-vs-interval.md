@@ -29,7 +29,7 @@ So in our case the `click()` opened the alert, which started the `$timeout`, and
 This [link](https://github.com/angular/protractor/issues/169){:target="_blank"}
 helped us a lot to understand the situation:
 
-Therefore if you want to test any `$timeout` based functionality you have to turn on `ignoreSynchronization` which is basically a hack for non-Angular apps.
+If you want to test any `$timeout` based functionality you have to turn on `ignoreSynchronization` which is basically a hack for non-Angular apps.
 
 [There](https://github.com/angular/angular.js/commit/2b5ce84fca7b41fca24707e163ec6af84bc12e83){:target="_blank"}
 they suggest to use `$interval` because it fits better to this case.

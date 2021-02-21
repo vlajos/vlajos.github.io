@@ -5,7 +5,7 @@ title: "Save our day with ghostscript to concatenate PDF files"
 excerpt: "Using ghostscript to manipulate PDF files."
 ---
 This issue started without any extra notice.
-Customer service notified us that the labels were not uploaded.
+Customer service notified us that labels were not uploaded.
 Basically we receive the labels from our logistic partners, we print them out and apply them to the parcels we send out.
 And there is also a small step in the system where we concatenate the label batches to bigger files in order to make
 the printing easier for our collegues.
@@ -25,7 +25,7 @@ Stack trace:
 #5 ...php/utils/shipping/provider in ...lib/FPDI-1.5.2/pdf_parser.php on line 329
 {% endhighlight %}
 
-The error message is quite clean: the input PDF files had been changed.
+The error message was quite clean: the input PDF files' format had been changed.
 We could verify it easily:
 
 {% highlight bash %}
@@ -51,7 +51,7 @@ We tried it with longer files and we noticed that a few labels had changed their
 And the problem appeared consistently with the same files.
 
 We started to play with the switches... Ghostscript had much more options than we expected and its documentation is not really
-Google friend, but we found finally the AutoRotatePages flag.
+Google friendly, but we found finally the `AutoRotatePages` flag.
 
 Our first attempt was the `-dAutoRotatePages=/All` setting, but this uses some kind of majority decision for rotating the pages...
 We tried this with only one label which had been rotated unintentionally.
@@ -61,7 +61,7 @@ At least with this given file ghostscript did the same rotation with or without 
 
 Fortunately our next attempt was successful.
 We added `-dAutoRotatePages=/None`
-Which worked properly for both the big batches and all the single files.
+Which worked properly for both the big batches and the single files.
 
 {% highlight bash %}
 gs -dAutoRotatePages=/None -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=$outfile $inputfiles
