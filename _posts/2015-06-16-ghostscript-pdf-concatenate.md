@@ -6,9 +6,9 @@ excerpt: "Using ghostscript to manipulate PDF files."
 ---
 This issue started without any extra notice.
 Customer service notified us that labels were not uploaded.
-Basically we receive the labels from our logistic partners, we print them out and apply them to the parcels we send out.
-And there is also a small step in the system where we concatenate the label batches to bigger files in order to make
-the printing easier for our collegues.
+Essentially, we receive the labels from our logistic partners, we print them out and apply them to the parcels we send out.
+And there is also a small step in the system where we concatenate the label batches to bigger files to make
+the printing easier for our colleagues.
 Both the input and the output files are simple PDFs.
 
 When we checked our logs we noticed that something had been changed with the original labels.
@@ -25,7 +25,7 @@ Stack trace:
 #5 ...php/utils/shipping/provider in ...lib/FPDI-1.5.2/pdf_parser.php on line 329
 {% endhighlight %}
 
-The error message was quite clean: the input PDF files' format had been changed.
+The error message was quite clear: the input PDF files' format had been changed.
 We could verify it easily:
 
 {% highlight bash %}
@@ -36,7 +36,7 @@ label_55a780e22172f.pdf: PDF document, version 1.7
 We checked the link the error message mentioned...
 They have a commercial add-on to open PDF files higher than 1.4.
 
-Fortunately I played with ghostscript a few days ago and remembered that it could manipulate PDF files efficiently.
+Fortunately, I played with ghostscript a few days ago and remembered that it could manipulate PDF files efficiently.
 And Google gave us useful examples on stackoverflow.
 
 We implemented the new code in less than half an hour. The main logic was very simple:
@@ -48,10 +48,10 @@ gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=$outfile $inputfiles
 We gave it a try and it worked.
 We tried it with longer files and we noticed that a few labels had changed their orientation.
 2-3 of 60 labels were landscape instead of portrait, though all the originals were portrait.
-And the problem appeared consistently with the same files.
+And the problem appeared consistent with the same files.
 
 We started to play with the switches... Ghostscript had much more options than we expected and its documentation is not really
-Google friendly, but we found finally the `AutoRotatePages` flag.
+Google-friendly, but we found finally the `AutoRotatePages` flag.
 
 Our first attempt was the `-dAutoRotatePages=/All` setting, but this uses some kind of majority decision for rotating the pages...
 We tried this with only one label which had been rotated unintentionally.
@@ -59,7 +59,7 @@ It did not work as we could expect.
 It seemed that something like this had been enabled on page level.
 At least with this given file ghostscript did the same rotation with or without the flag.
 
-Fortunately our next attempt was successful.
+Fortunately, our next attempt was successful.
 We added `-dAutoRotatePages=/None`
 Which worked properly for both the big batches and the single files.
 

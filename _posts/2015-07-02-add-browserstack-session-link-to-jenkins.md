@@ -8,11 +8,11 @@ We have a couple of Jenkins tasks for running tests with Browserstack.
 One suite contains 5-6 tests and 4 platforms configured with Jenkins' matrix plugin.
 (We plan to increase both dimensions.)
 
-If any of the tests fails and we want to investigate what happened we have to open a Browserstack window, navigate to the
+If any of the tests fail and we want to investigate what happened we have to open a Browserstack window, navigate to the
 given build page and find on the page the given session.
-This can be painful if the suite is still running, because Browserstack is continuously refreshing the page.
+This can be painful if the suite is still running because Browserstack is continuously refreshing the page.
 When the tests are done at least the page is stable, so you can search with the browser's find function.
-If the test had not run amongst the first ten of the given suite you have click one more.
+If the test had not run amongst the first ten of the given suite you have to click one more.
 
 This is not so bad if you do it once or twice a day. Approximately 30 seconds and 4-5 clicks.
 But if you develop intensively and the tests are not stable yet this could take 10% of your time maybe even more.
@@ -22,7 +22,7 @@ Jenkins already communicates with Browserstack, though it does indirectly, but m
 session's link to it.
 
 We asked Browserstack's support. They told us that we could access the remote session's id and
-with that id we could also get the session's url using Browserstack's REST API.
+with that id, we could also get the session's url using Browserstack's REST API.
 
 Getting the webdriver session's data:
 {% highlight javascript %}
@@ -37,8 +37,8 @@ And we can call the REST API using this id on the end-point:
   var link= 'https://www.browserstack.com/automate/sessions/' + sessionData.id_ + '.json';
 {% endhighlight %}
 
-Unfortunately this second link is protected with HTTP-Auth.
-But the expected login/password here is not the API credentials, but the web user's...
+Unfortunately, this second link is protected with HTTP-Auth.
+But the expected login/password here is not the API credentials, but the web user's one.
 So we have to allow Jenkins to use somehow one of our web user's credentials.
 
 The final code for this:
@@ -60,7 +60,7 @@ browser.driver.session_.then(function(sessionData) {
 });
 {% endhighlight %}
 
-In our case we displayed the capabilities as well like in the first snippet and we have an exception when we test locally
+In our case, we displayed the capabilities as well like in the first snippet and we have an exception when we test locally
 instead of Browserstack and when the password is accessed somehow differently.
 So it is a bit more complex but this is the main concept.
 
@@ -91,7 +91,7 @@ Then you have to configure it for all the tasks where you want to use it:
  *  Regular expression for failed builds: `Browserstack session url: (.*)`
  *  Description for failed builds: `<a href="\1">Browserstack session</a>`
 
-The last two items appear when you open the advanced options. Without them this feature is pretty useless for debugging...
+The last two items appear when you open the advanced options. Without them, this feature is pretty useless for debugging...
 We tried to add `target="_blank"`, but it was stripped out by Jenkins. Probably it could be added somehow...
 
 And the result looks like this in the history:

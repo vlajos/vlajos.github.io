@@ -2,15 +2,15 @@
 modified: 2015-09-16
 tags: [apache, nginx, testing, http, wget, https, ssl]
 title: "Verifying webserver configuration with some basic tests"
-excerpt: "Behind firewalls, load balancers, cdns, reverse proxies and with a not totally simple webserver configuration, it can quite be hard to verify all the different locations, virtual hosts, aliases, rewrites."
+excerpt: "Behind firewalls, load balancers, cdns, reverse proxies and with a not simple webserver configuration, it can quite be hard to verify all the different locations, virtual hosts, aliases, rewrites."
 ---
 
 We have a project to restructure our webservers, consolidate their configurations, consider using new technologies and implement
 best practices where it is possible.
 Which means lots of configuration changes.
 Our setup is not too complex. We have only a reverse proxy, 2 webservers (one of them is the reverse proxy), a firewall and we use sometimes
-a CDN for different contents. Basically we serve 4 sites via https, we have a couple of aliases, redirects, rewrite rules and some
-header manipulation for browser side caching, security and compression.
+a CDN for different contents. Essentially, we serve 4 sites via https, we have a couple of aliases, redirects, rewrite rules, and some
+header manipulation for browser-side caching, security, and compression.
 
 But if we count the different types of requests it is roughly
 
@@ -19,16 +19,16 @@ But if we count the different types of requests it is roughly
  * 2 (http redirects, https versions) *
  * 4-5 (aspects of the response we want to verify)
 
-And a couple of security related rules.
+And a couple of security-related rules.
 
 So the number is much higher than we would like to test it manually after each configuration change...
 
-We googled but we could not find any tool which would offer any assertion mechanism for testing http headers.
-To be honest I am a bit surprised, maybe we were not thorough enough.
+We googled but we could not find any tool which would offer any assertion mechanism for testing HTTP headers.
+To be honest, I am a bit surprised, maybe we were not thorough enough.
 
-Anyway we decided to implement something basic for ourselves which fulfils our needs and it is not more complex than the minimum.
+Anyway, we decided to implement something basic for ourselves which fulfills our needs and it is not more complex than the minimum.
 
-Finally we picked `wget` and wrote a couple of trivial `bash` functions around it.
+Finally, we picked `wget` and wrote a couple of trivial `bash` functions around it.
 
 The main logic of the test "framework":
 
@@ -46,7 +46,7 @@ testShouldNotContain(){
 }
 {% endhighlight %}
 
-So it is around 10 lines and nothing super-fancy. (And uses global variables... Khm. It could be improved.)
+So it is around 10 lines and nothing super-fancy. (And uses global variables... Erm. It could be improved.)
 
 But let's see it in action:
 
@@ -135,7 +135,7 @@ testShouldContain "HTTP/1.1 403 Forbidden"
 
 {% endhighlight %}
 
-So in around 2 hours we implemented 107 basic tests to verify our different assets, security, gzip, proxy and caching related rules.
+So in around 2 hours, we implemented 107 basic tests to verify our different assets, security, gzip, proxy, and caching-related rules.
 Its runtime is around 2 secs.
 So our main goal has been achieved. If we change anything in the setup we can verify that with these rules practically instantly.
 
@@ -147,10 +147,10 @@ Some more random comments:
    * `-S`: We started with `--debug` but it gave us too many unneeded lines. `-S` displays only the response headers.
    * `--no-check-certificate`: Unfortunately the server is not yet accessible under its final DNS name, so the url's host we are connecting to is different than the name in the certificates.
    * `--header="Accept-encoding: gzip"`: We also want to test compression.
-   * `--max-redirect=0`: By default wget would follow redirects, but in our case this is not required.
+   * `--max-redirect=0`: By default, wget would follow redirects, but in our case, this is not required.
    * `--header="Host: $2"`: We want to test different virtual hosts and the current DNS settings point to the live system.
    * `$1://$TargetIp:$3$4`: This is only the construction of the URL.
    * `-O /dev/null`: Throw away the downloaded content.
    * `2>&1`: Merge wget's standard error into its output.
- * We could group the asserts with creating higher level functions. For example `testCacheHeaders`, `testGzipped` and so on.
+ * We could group the asserts by creating higher-level functions. For example `testCacheHeaders`, `testGzipped` and so on.
    Maybe we will do this later.

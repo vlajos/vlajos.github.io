@@ -6,17 +6,17 @@ excerpt: "How can you get useful insights about running processes."
 ---
 I received a task to improve our shipment tracking system.
 A part of the task was to poll more frequently our partner site's remote statuses.
-Basically I had to change the two times a day cadence to 2 times an hour.
-We already had a cronjob to manage this task, but I was not really familiar with this sub-system.
+Essentially, I had to change the two times a day cadence to 2 times an hour.
+We already had a cronjob to manage this task, but I was not very familiar with this sub-system.
 
 I hoped a bit that maybe it is enough to reconfigure the job's crontab entry.
-Anyway I wanted to play safely so checked first how long the given tasks run.
-The result was really sad. The task worked on only four day's data, but ran for 75 minutes.
+Anyway, I wanted to play safely so checked first how long the given tasks run.
+The result was really sad. The task worked on only four day's data but ran for 75 minutes.
 The math was simple 75 minutes was too much.
 
 As far as I knew the job polls only the remote systems and saves the result in the database.
 
-We did not have too many profiling tools installed to the related machine, so I chose to use the simplest available tool:
+We did not have too many profiling tools installed on the related machine, so I chose to use the simplest available tool:
 `strace`.
 
 I ran the job in one terminal and started a `strace` in another.
@@ -33,4 +33,4 @@ It was a very simple one:
 select field from table where remote_id=?
 {% endhighlight %}
 
-The table received its well deserved index in minutes and the next run of the job was only 14 minutes.
+The table received its well-deserved index in minutes and the next run of the job was only 14 minutes.
