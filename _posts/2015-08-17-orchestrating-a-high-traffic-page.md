@@ -49,7 +49,7 @@ on our nginx server using this [page](http://www.cyberciti.biz/faq/nginx-enable-
 
 I checked the numbers and saw that we had 2000 connections and most of them were waiting... Hmm.
 2000 is very close to 2048.
-I opened our nginx config and realised that we had only 1 `worker_process`... khm. Our server had 4 cpu cores (although virtuals).
+I opened our nginx config and realised that we had only 1 `worker_process`... Erm. Our server had 4 cpu cores (although virtuals).
 And the `worker_connections` value was 2048...
 
 I did a quick nginx tuning, increased the number of worker processes to 8, and enabled `multi_accept`. So with these new values:
